@@ -14,9 +14,10 @@ Desarrollar un sistema de seguridad que pueda procesar y gestionar datos de múl
 
 Solución propuesta:
 
-1.      Configuración del Proyecto:
+1.Configuración del Proyecto
 
 Crear un proyecto Spring Boot con dependencias necesarias para la gestión de seguridad y concurrencia.
+
 2.Gestión de Sensores
 
   Implementar beans para cada tipo de sensor utilizando el principio de Inversión de Control (IoC).

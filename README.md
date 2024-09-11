@@ -17,23 +17,27 @@ Solución propuesta:
 1.      Configuración del Proyecto:
 
 Crear un proyecto Spring Boot con dependencias necesarias para la gestión de seguridad y concurrencia.
-2.      Gestión de Sensores:
+2.Gestión de Sensores
 
-Implementar beans para cada tipo de sensor utilizando el principio de Inversión de Control (IoC).
+  Implementar beans para cada tipo de sensor utilizando el principio de Inversión de Control (IoC).
 Configurar el contenedor de Spring para gestionar el ciclo de vida de los beans.
-3.      Procesamiento Concurrente:
+
+3.Procesamiento Concurrente
 
 Utilizar @Async y ExecutorService para manejar el procesamiento concurrente de los datos de los sensores.
 Implementar servicios que procesen los datos de los sensores de manera eficiente.
-4.      Control de Acceso:
+
+4.Control de Acceso
 
 Configurar Spring Security para manejar la autenticación y autorización de usuarios.
 Definir roles y permisos adecuados para el acceso al sistema.
-5.      Notificaciones:
+
+5.Notificaciones
 
 Implementar un sistema de notificaciones en tiempo real utilizando WebSocket para alertar sobre cualquier intrusión o evento crítico.
 Configurar servicios de mensajería para enviar alertas a dispositivos móviles y correos electrónicos.
-6.      Monitorización y Logs:
+
+6.Monitorización y Logs
 
 Configurar Spring Actuator para monitorizar el estado del sistema.
 Implementar logging eficiente para rastrear eventos y posibles errores.

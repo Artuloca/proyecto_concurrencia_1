@@ -20,3 +20,5 @@ spring:
   docker:
     compose:
       lifecycle-management: start-only
+server:
+  port: 8081

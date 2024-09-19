@@ -3,11 +3,13 @@ import React, { useState, ChangeEvent } from 'react';
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showNewPopup, setShowNewPopup] = useState(false);
 
     const handleLogin = () => {
         // Aquí puedes manejar la lógica de inicio de sesión
         console.log('Username:', username);
         console.log('Password:', password);
+        setShowNewPopup(true);
     };
 
     const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,25 +21,35 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div style={styles.overlay}>
-            <div style={styles.popup}>
-                <h2>Login</h2>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={handleUsernameChange}
-                    style={styles.input}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    style={styles.input}
-                />
-                <button onClick={handleLogin} style={styles.button}>Login</button>
-            </div>
+        <div>
+            {!showNewPopup ? (
+                <div style={styles.overlay}>
+                    <div style={styles.popup}>
+                        <h2>Login</h2>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={handleUsernameChange}
+                            style={styles.input}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            style={styles.input}
+                        />
+                        <button onClick={handleLogin} style={styles.button}>Login</button>
+                    </div>
+                </div>
+            ) : (
+                <div style={styles.overlay}>
+                    <div style={styles.popup}>
+                        {/* Nuevo pop-up vacío */}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
@@ -72,7 +84,7 @@ const styles = {
         padding: '10px 20px',
         borderRadius: '5px',
         border: 'none',
-        backgroundColor: '#007BFF',
+        backgroundColor: 'black',
         color: 'white',
         cursor: 'pointer',
     },

@@ -19,8 +19,12 @@
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "jsx": "react"
   },
+  "include": [
+    "src/main/frontend/src"
+  ],
   "exclude": [
     "node_modules/**/*",
     "**/build/**/*",

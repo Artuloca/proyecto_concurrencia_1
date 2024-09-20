@@ -25,5 +25,6 @@ public class Temperatura {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "evento_id")
     private Evento evento;
+    private int temperatura; // nuevo campo para guardar el valor de la temperatura
 
 }

@@ -3,6 +3,7 @@ package io.bootify.my_app.EVENTOS;
 import io.bootify.my_app.SENSORES.SensorAcceso;
 import io.bootify.my_app.SENSORES.SensorMovimiento;
 import io.bootify.my_app.SENSORES.SensorTemperatura;
+import io.bootify.my_app.SERVICIO.SensorService;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -15,14 +16,10 @@ public class GeneradorEventos {
 
     private final Random random = new Random();
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private final SensorAcceso sensorAcceso;
-    private final SensorMovimiento sensorMovimiento;
-    private final SensorTemperatura sensorTemperatura;
+    private final SensorService sensorService;
 
-    public GeneradorEventos(SensorAcceso sensorAcceso, SensorMovimiento sensorMovimiento, SensorTemperatura sensorTemperatura) {
-        this.sensorAcceso = sensorAcceso;
-        this.sensorMovimiento = sensorMovimiento;
-        this.sensorTemperatura = sensorTemperatura;
+    public GeneradorEventos(SensorService sensorService) {
+        this.sensorService = sensorService;
         scheduler.scheduleAtFixedRate(this::generarEvento, 0, 5, TimeUnit.SECONDS);
     }
 
@@ -31,16 +28,6 @@ public class GeneradorEventos {
         int temperatura = random.nextInt(56) - 5; // Genera un número entre -5 y 50
         boolean acceso = random.nextDouble() <= 0.1;
 
-        String mensajeMovimiento = sensorMovimiento.verificarMovimiento(movimiento);
-        String mensajeTemperatura = sensorTemperatura.verificarTemperatura(temperatura);
-        String mensajeAcceso = sensorAcceso.verificarAcceso(acceso);
-
-        System.out.println("Se ha realizado un barrido en el edificio, resultados:\n"+
-                "Movimiento: " + (movimiento ? "detectado" : "no detectado") +
-                (mensajeMovimiento.isEmpty() ? "" : ", " + mensajeMovimiento) + "\n" +
-                "Temperatura: " + temperatura +
-                (mensajeTemperatura.isEmpty() ? "" : ", " + mensajeTemperatura) + "\n" +
-                "Acceso: " + (acceso ? "detectado" : "no detectado") +
-                (mensajeAcceso.isEmpty() ? "" : ", " + mensajeAcceso) + "\n");
+        sensorService.procesarDatosSensores(movimiento, temperatura, acceso);
     }
 }

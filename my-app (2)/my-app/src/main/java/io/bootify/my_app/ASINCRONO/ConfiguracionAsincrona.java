@@ -27,16 +27,19 @@ public class ConfiguracionAsincrona {
 
     @Async("taskExecutor")
     public CompletableFuture<String> verificarMovimiento(boolean movimiento) {
+        System.out.println("Verificando movimiento"+Thread.currentThread().getName());
         return CompletableFuture.completedFuture(sensorMovimiento.verificarMovimiento(movimiento));
     }
 
     @Async("taskExecutor")
     public CompletableFuture<String> verificarTemperatura(int temperatura) {
+        System.out.println("Verificando movimiento"+Thread.currentThread().getName());
         return CompletableFuture.completedFuture(sensorTemperatura.verificarTemperatura(temperatura));
     }
 
     @Async("taskExecutor")
     public CompletableFuture<String> verificarAcceso(boolean acceso) {
+        System.out.println("Verificando movimiento"+Thread.currentThread().getName());
         return CompletableFuture.completedFuture(sensorAcceso.verificarAcceso(acceso));
     }
 }

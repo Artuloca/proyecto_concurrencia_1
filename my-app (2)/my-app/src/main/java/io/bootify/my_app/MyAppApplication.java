@@ -1,22 +1,29 @@
 package io.bootify.my_app;
-
-import io.bootify.my_app.EVENTOS.GeneradorEventos;
+import jakarta.annotation.PreDestroy;
+import io.bootify.my_app.reset.DatabaseCleanupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import jakarta.annotation.PreDestroy;
 
 @SpringBootApplication
 public class MyAppApplication {
 
-    public static void main(final String[] args) {
-        ApplicationContext context = SpringApplication.run(MyAppApplication.class, args);
+    @Autowired
+    private DatabaseCleanupService databaseCleanupService;
 
-        GeneradorEventos eventito = context.getBean(GeneradorEventos.class);
-        System.out.println(eventito);
+    public static void main(final String[] args) {
+        SpringApplication.run(MyAppApplication.class, args);
     }
 
+    @PreDestroy
+    public void onExit() {
+        databaseCleanupService.clearDatabase();
+        System.out.println("Base de datos vaciada correctamente.");
+    }
 
     @Bean
     public CommandLineRunner commandLineRunner() {

@@ -1,8 +1,13 @@
+// File: src/main/java/io/bootify/my_app/domain/Usuario.java
 package io.bootify.my_app.domain;
 
+import io.bootify.my_app.repos.UsuarioRepository;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import jakarta.annotation.PostConstruct;
 
 @Entity
 @Getter
@@ -31,5 +36,20 @@ public class Usuario {
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.esAdmin = esAdmin;
+    }
+
+    @Component
+    public static class UsuarioInitializer {
+
+        @Autowired
+        private UsuarioRepository usuarioRepository;
+
+        @PostConstruct
+        public void init() {
+            if (usuarioRepository.findByNombre("admin").isEmpty()) {
+                Usuario admin = new Usuario("admin", "admin", true);
+                usuarioRepository.save(admin);
+            }
+        }
     }
 }

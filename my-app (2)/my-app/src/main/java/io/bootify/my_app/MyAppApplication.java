@@ -34,18 +34,6 @@ public class MyAppApplication {
     public CommandLineRunner commandLineRunner() {
         return args -> {
             System.out.println("Aplicación iniciada correctamente Fernando!");
-
-            // Crear usuarios de prueba
-            Usuario usuario1 = new Usuario("usuario1", "password1", true);
-            Usuario usuario2 = new Usuario("usuario2", "password2", false);
-            Usuario usuario3 = new Usuario("usuario3", "password3", false);
-
-            // Guardar usuarios en la base de datos
-            usuarioRepository.save(usuario1);
-            usuarioRepository.save(usuario2);
-            usuarioRepository.save(usuario3);
-
-            System.out.println("Usuarios de prueba creados correctamente.");
         };
     }
 }

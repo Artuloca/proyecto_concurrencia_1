@@ -15,5 +15,6 @@ public class DatabaseCleanupService {
         jdbcTemplate.execute("TRUNCATE TABLE movimiento");
         jdbcTemplate.execute("TRUNCATE TABLE temperatura");
         jdbcTemplate.execute("TRUNCATE TABLE acceso");
+        jdbcTemplate.execute("TRUNCATE TABLE usuario");
     }
 }

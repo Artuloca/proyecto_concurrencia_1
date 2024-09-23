@@ -32,12 +32,6 @@ public class Databases {
     private Set<TemperaturaSensor> databaseTemperaturaSensors;
 
     @OneToMany(mappedBy = "database")
-    private Set<AccesoSensor> accesoSensors;
-
-    @OneToOne(mappedBy = "database", fetch = FetchType.LAZY)
-    private Admin admin;
-
-    @OneToMany(mappedBy = "database")
-    private Set<User> users;
+    private Set<AccesoSensor> databaseAccesoSensores;
 
 }

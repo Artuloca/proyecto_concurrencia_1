@@ -1,16 +1,13 @@
+// File: src/main/java/io/bootify/my_app/domain/Usuario.java
 package io.bootify.my_app.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import io.bootify.my_app.repos.UsuarioRepository;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import jakarta.annotation.PostConstruct;
 
 @Entity
 @Getter
@@ -18,21 +15,41 @@ import lombok.Setter;
 public class Usuario {
 
     @Id
-    @Column(nullable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 50)
-    private String user;
+    @Column(nullable = false, length = 50)
+    private String nombre;
 
-    @Column(length = 50)
-    private String password;
+    @Column(nullable = false)
+    private String contraseña;
 
-    @Column(length = 50)
-    private String tipo;
+    @Column(nullable = false)
+    private boolean esAdmin;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "notificacion_id")
-    private Notificacion notificacion;
+    // Constructor vacío (opcional)
+    public Usuario() {
+    }
 
+    // Constructor con parámetros (opcional)
+    public Usuario(String nombre, String contraseña, boolean esAdmin) {
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+        this.esAdmin = esAdmin;
+    }
+
+    @Component
+    public static class UsuarioInitializer {
+
+        @Autowired
+        private UsuarioRepository usuarioRepository;
+
+        @PostConstruct
+        public void init() {
+            if (usuarioRepository.findByNombre("admin").isEmpty()) {
+                Usuario admin = new Usuario("admin", "admin", true);
+                usuarioRepository.save(admin);
+            }
+        }
+    }
 }

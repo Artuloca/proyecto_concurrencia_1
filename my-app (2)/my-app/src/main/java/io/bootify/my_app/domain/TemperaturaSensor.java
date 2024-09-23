@@ -31,7 +31,4 @@ public class TemperaturaSensor {
     @JoinColumn(name = "database_id")
     private Databases database;
 
-    @OneToMany(mappedBy = "temperaturaSensor")
-    private Set<CorreoNotificacion> notificaciones;
-
 }

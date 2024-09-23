@@ -23,7 +23,8 @@ public class Movimiento {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "evento_id")
-    private Evento evento;
+    private Evento evento; // Relación con Evento
+
 
     private boolean movimiento; // nuevo campo para guardar el valor del movimiento
 }

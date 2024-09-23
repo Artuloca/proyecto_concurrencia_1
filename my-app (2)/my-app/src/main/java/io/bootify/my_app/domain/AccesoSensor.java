@@ -1,3 +1,4 @@
+// File: src/main/java/io/bootify/my_app/domain/AccesoSensor.java
 package io.bootify.my_app.domain;
 
 import jakarta.persistence.Column;
@@ -11,7 +12,6 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
@@ -23,13 +23,9 @@ public class AccesoSensor {
     private Integer id;
 
     @Column(nullable = false)
-    private String user;
-
-    @Column(nullable = false)
-    private String password;
+    private String tipoAcceso;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "database_id")
     private Databases database;
-
 }

@@ -1,4 +1,4 @@
-// File: src/main/java/io/bootify/my_app/service/DatabaseCleanupService.java
+// File: src/main/java/io/bootify/my_app/reset/DatabaseCleanupService.java
 package io.bootify.my_app.reset;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,5 @@ public class DatabaseCleanupService {
         jdbcTemplate.execute("TRUNCATE TABLE movimiento");
         jdbcTemplate.execute("TRUNCATE TABLE temperatura");
         jdbcTemplate.execute("TRUNCATE TABLE acceso");
-
     }
 }

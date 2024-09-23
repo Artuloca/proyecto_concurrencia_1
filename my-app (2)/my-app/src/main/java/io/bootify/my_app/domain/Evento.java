@@ -1,3 +1,4 @@
+
 package io.bootify.my_app.domain;
 
 import jakarta.persistence.Column;
@@ -9,7 +10,6 @@ import jakarta.persistence.OneToMany;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Entity
 @Getter
@@ -33,7 +33,5 @@ public class Evento {
     @OneToMany(mappedBy = "evento")
     private Set<Temperatura> eventoTemperaturas;
 
-    @OneToMany(mappedBy = "evento")
-    private Set<Acceso> eventoAccesoes;
 
 }

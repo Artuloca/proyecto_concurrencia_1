@@ -1,16 +1,8 @@
 package io.bootify.my_app.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Entity
 @Getter
@@ -18,7 +10,6 @@ import lombok.Setter;
 public class Acceso {
 
     @Id
-    @Column(nullable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -26,5 +17,10 @@ public class Acceso {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
-    private boolean acceso; // nuevo campo para guardar el valor del acceso
+    @Column(nullable = false)
+    private boolean acceso; // Campo para almacenar el estado de acceso
+
+    // Constructor vacío (opcional)
+    public Acceso() {
+    }
 }

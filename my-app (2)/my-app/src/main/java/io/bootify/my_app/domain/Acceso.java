@@ -26,4 +26,5 @@ public class Acceso {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+    private boolean acceso; // nuevo campo para guardar el valor del acceso
 }

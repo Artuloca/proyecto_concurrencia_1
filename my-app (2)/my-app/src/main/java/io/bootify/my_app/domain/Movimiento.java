@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
@@ -26,4 +25,5 @@ public class Movimiento {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+    private boolean movimiento; // nuevo campo para guardar el valor del movimiento
 }

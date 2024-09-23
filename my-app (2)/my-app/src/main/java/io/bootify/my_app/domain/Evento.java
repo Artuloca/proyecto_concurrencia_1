@@ -36,7 +36,4 @@ public class Evento {
     @OneToMany(mappedBy = "evento")
     private Set<Acceso> eventoAccesoes;
 
-    @OneToMany(mappedBy = "evento")
-    private Set<Sensor> eventoSensors;
-
 }

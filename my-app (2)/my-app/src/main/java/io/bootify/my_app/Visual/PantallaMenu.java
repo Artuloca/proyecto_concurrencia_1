@@ -1,12 +1,20 @@
 // File: src/main/java/io/bootify/my_app/Visual/PantallaMenu.java
 package io.bootify.my_app.Visual;
 
+import io.bootify.my_app.ControlAcceso.AuthenticationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@Component
 public class PantallaMenu extends JFrame {
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     private JTextField nombreUsuarioField;
     private JPasswordField contraseñaField;
@@ -56,9 +64,9 @@ public class PantallaMenu extends JFrame {
                 String nombreUsuario = nombreUsuarioField.getText();
                 String contraseña = new String(contraseñaField.getPassword());
 
-                // Aquí puedes agregar la lógica para manejar el nombre de usuario y la contraseña
-                System.out.println("Usuario: " + nombreUsuario);
-                System.out.println("Contraseña: " + contraseña);
+                // Lógica para autenticar el usuario
+                String mensaje = authenticationService.authenticate(nombreUsuario, contraseña);
+                JOptionPane.showMessageDialog(PantallaMenu.this, mensaje);
             }
         });
     }

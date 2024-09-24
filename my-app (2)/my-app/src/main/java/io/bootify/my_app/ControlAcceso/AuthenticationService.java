@@ -23,4 +23,13 @@ public class AuthenticationService {
                 })
                 .orElse("Nombre de usuario no encontrado");
     }
+
+    public Usuario createUser(String nombre, String contraseña, boolean esAdmin) {
+        Usuario newUser = new Usuario(nombre, contraseña, esAdmin);
+        return usuarioRepository.save(newUser);
+    }
+
+    public void deleteUser(Integer id) {
+        usuarioRepository.deleteById(id);
+    }
 }

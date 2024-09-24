@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import LoginScreen from './components/LoginScreen';
-import AdminScreen from './components/AdminScreen';
-import UserScreen from './components/UserScreen';
+import PagPrincipal from './componentes/PagPrincipal';
+import PagAdmin from './componentes/PagAdmin';
+import PagUser from './componentes/PagUser';
 
 function App() {
     const [user, setUser] = useState(null);

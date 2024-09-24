@@ -10,7 +10,6 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
@@ -35,8 +34,5 @@ public class Evento {
 
     @OneToMany(mappedBy = "evento")
     private Set<Acceso> eventoAccesoes;
-
-    @OneToMany(mappedBy = "evento")
-    private Set<Sensor> eventoSensors;
 
 }

@@ -1,15 +1,19 @@
 import React, { useState, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showNewPopup, setShowNewPopup] = useState(false);
+    const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         // Aquí puedes manejar la lógica de inicio de sesión
-        console.log('Username:', username);
-        console.log('Password:', password);
-        setShowNewPopup(true);
+        if (username === 'admin' && password === 'adminpassword') {
+            navigate('/admin');
+        } else {
+            // Aquí puedes agregar la lógica para verificar usuarios normales
+            navigate('/user');
+        }
     };
 
     const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,35 +25,25 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div>
-            {!showNewPopup ? (
-                <div style={styles.overlay}>
-                    <div style={styles.popup}>
-                        <h2>Login</h2>
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            value={username}
-                            onChange={handleUsernameChange}
-                            style={styles.input}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            style={styles.input}
-                        />
-                        <button onClick={handleLogin} style={styles.button}>Login</button>
-                    </div>
-                </div>
-            ) : (
-                <div style={styles.overlay}>
-                    <div style={styles.popup}>
-                        {/* Nuevo pop-up vacío */}
-                    </div>
-                </div>
-            )}
+        <div style={styles.overlay}>
+            <div style={styles.popup}>
+                <h2>Login</h2>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    style={styles.input}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    style={styles.input}
+                />
+                <button onClick={handleLogin} style={styles.button}>Login</button>
+            </div>
         </div>
     );
 };

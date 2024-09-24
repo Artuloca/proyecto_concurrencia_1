@@ -30,10 +30,6 @@ public class Sensor {
     private Evento evento;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "evento_id")
-    private Evento evento;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "evento_db_id")
     private EventDatabase eventoDb;
 

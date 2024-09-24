@@ -1,6 +1,7 @@
+// File: src/componentes/PagAdmin.js
 import React from 'react';
 
-function PagAdmin() {
+function PagAdmin({ onLogout }) {
     const handleCreateUser = async () => {
         const newUser = {
             nombre: 'nuevoUsuario',
@@ -27,6 +28,7 @@ function PagAdmin() {
             <h1>Admin Screen</h1>
             <button onClick={handleCreateUser}>Crear Usuario</button>
             <button onClick={() => handleDeleteUser(1)}>Borrar Usuario</button>
+            <button onClick={onLogout}>Logout</button>
         </div>
     );
 }

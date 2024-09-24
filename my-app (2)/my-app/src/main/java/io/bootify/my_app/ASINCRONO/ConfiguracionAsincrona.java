@@ -1,6 +1,6 @@
+// File: src/main/java/io/bootify/my_app/ASINCRONO/ConfiguracionAsincrona.java
 package io.bootify.my_app.ASINCRONO;
 
-import io.bootify.my_app.Menu.PantallaPrincipal;
 import io.bootify.my_app.SENSORES.SensorAcceso;
 import io.bootify.my_app.SENSORES.SensorMovimiento;
 import io.bootify.my_app.SENSORES.SensorTemperatura;
@@ -19,13 +19,11 @@ public class ConfiguracionAsincrona {
     private final SensorAcceso sensorAcceso;
     private final SensorMovimiento sensorMovimiento;
     private final SensorTemperatura sensorTemperatura;
-    private final PantallaPrincipal pantallaUsuario;
 
-    public ConfiguracionAsincrona(SensorAcceso sensorAcceso, SensorMovimiento sensorMovimiento, SensorTemperatura sensorTemperatura, PantallaPrincipal pantallaUsuario) {
+    public ConfiguracionAsincrona(SensorAcceso sensorAcceso, SensorMovimiento sensorMovimiento, SensorTemperatura sensorTemperatura) {
         this.sensorAcceso = sensorAcceso;
         this.sensorMovimiento = sensorMovimiento;
         this.sensorTemperatura = sensorTemperatura;
-        this.pantallaUsuario = pantallaUsuario;
     }
 
     @Async("taskExecutor")
@@ -44,10 +42,5 @@ public class ConfiguracionAsincrona {
     public CompletableFuture<String> verificarAcceso(boolean acceso) {
         System.out.println("Verificando acceso" + Thread.currentThread().getName());
         return CompletableFuture.completedFuture(sensorAcceso.verificarAcceso(acceso));
-    }
-
-    @Async("taskExecutor")
-    public CompletableFuture<Void> mostrarPantallaUsuario() {
-        return pantallaUsuario.mostrarPantalla();
     }
 }

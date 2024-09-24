@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PagPrincipal from './componentes/PagPrincipal';
 import PagAdmin from './componentes/PagAdmin';
 import PagUser from './componentes/PagUser';
@@ -10,15 +10,23 @@ function App() {
         setUser(user);
     };
 
+    const handleLogout = () => {
+        setUser(null);
+    };
+
+    useEffect(() => {
+        // Aquí puedes agregar cualquier lógica adicional que necesites para manejar la concurrencia
+    }, [user]);
+
     if (!user) {
         return <PagPrincipal onLogin={handleLogin} />;
     }
 
     if (user.esAdmin) {
-        return <PagAdmin />;
+        return <PagAdmin onLogout={handleLogout} />;
     }
 
-    return <PagUser />;
+    return <PagUser onLogout={handleLogout} />;
 }
 
 export default App;

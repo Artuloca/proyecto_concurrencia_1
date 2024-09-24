@@ -1,28 +1,24 @@
-// File: src/main/java/io/bootify/my_app/Menu/PantallaPrincipal.java
 package io.bootify.my_app.Menu;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
-
-import java.util.Scanner;
+import org.springframework.ui.Model;
 import java.util.concurrent.CompletableFuture;
 
 @Component
 public class PantallaPrincipal {
 
     @Async("taskExecutor")
-    public CompletableFuture<Void> mostrarPantalla() {
-        Scanner scanner = new Scanner(System.in);
+    public CompletableFuture<Void> mostrarPantalla(String nombreUsuario, String contraseña, Model model) {
+        model.addAttribute("usuario", nombreUsuario);
+        model.addAttribute("contraseña", contraseña);
 
-        System.out.print("Ingrese el nombre de usuario: ");
-        String nombreUsuario = scanner.nextLine();
-
-        System.out.print("Ingrese la contraseña: ");
-        String contraseña = scanner.nextLine();
-
-        // Aquí puedes agregar la lógica para manejar el nombre de usuario y la contraseña
-        System.out.println("Usuario: " + nombreUsuario);
-        System.out.println("Contraseña: " + contraseña);
+        // Simular un retraso para demostrar la concurrencia
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
 
         return CompletableFuture.completedFuture(null);
     }

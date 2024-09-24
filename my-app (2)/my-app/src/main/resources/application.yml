@@ -21,4 +21,4 @@ spring:
     compose:
       lifecycle-management: start-only
 server:
-  port: 8081
+  port: 8080

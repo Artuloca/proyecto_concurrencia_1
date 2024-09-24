@@ -1,4 +1,3 @@
-// File: src/main/java/io/bootify/my_app/ControlAcceso/AuthenticationService.java
 package io.bootify.my_app.ControlAcceso;
 
 import io.bootify.my_app.domain.Usuario;

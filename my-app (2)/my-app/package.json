@@ -3,11 +3,10 @@
   "author": "Bootify.io",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "devserver": "webpack serve --open --mode development",
-    "build": "webpack --mode production"
+    "devserver": "webpack serve --open --mode development"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
@@ -39,3 +38,4 @@
   },
   "private": true
 }
+

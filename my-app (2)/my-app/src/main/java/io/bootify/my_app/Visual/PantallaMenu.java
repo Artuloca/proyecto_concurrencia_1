@@ -20,7 +20,7 @@ public class PantallaMenu {
 
     @GetMapping("/")
     public String showLoginForm() {
-        return "login";
+        return "menu";
     }
 
     @PostMapping("/authenticate")

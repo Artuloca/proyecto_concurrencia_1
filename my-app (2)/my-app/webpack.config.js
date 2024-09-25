@@ -5,11 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WarningsToErrorsPlugin = require('warnings-to-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-
 module.exports = (env, argv) => ({
   entry: 'ts/app.ts',
   output: {
-    path: path.resolve(__dirname, './target/classes/static'),
+    path: path.resolve(__dirname, 'build'), // Cambiado a 'build'
     filename: 'js/bundle.js'
   },
   devtool: argv.mode === 'production' ? false : 'eval-source-map',

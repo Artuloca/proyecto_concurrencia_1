@@ -33,18 +33,22 @@ public class PantallaMenu {
             return "redirect:/admin";
         }
 
-        // Call asynchronous methods
-        configuracionAsincrona.verificarMovimiento(true);
-        configuracionAsincrona.verificarTemperatura(25);
-        configuracionAsincrona.verificarAcceso(true);
-        configuracionAsincrona.mostrarPantallaUsuario(nombreUsuario, contraseña, model);
+        // Check for valid user credentials
+        if ("Autenticación exitosa".equals(mensaje)) {
+            return "redirect:/user";
+        }
 
-        // Return the menu view
+        // Return the menu view with an error message
         return "menu";
     }
 
     @GetMapping("/admin")
     public String showAdminMenu() {
         return "admin_menu";
+    }
+
+    @GetMapping("/user")
+    public String showUserMenu() {
+        return "user_menu";
     }
 }

@@ -1,4 +1,5 @@
-package io.bootify.my_app.Visual;
+// File: src/main/java/io/bootify/my_app/Visual/MenuUsuario.java
+/*package io.bootify.my_app.Visual;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MenuUsuario {
 
-    @GetMapping("/viewUserDatabase")
+    @GetMapping("/user/viewUserDatabase")
     public String viewUserDatabase() {
         // Lógica para ver la base de datos del usuario
         return "view_user_database";
@@ -30,9 +31,11 @@ public class MenuUsuario {
         return "filter_critical_events";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/userLogout")
     public String logout() {
         // Lógica para salir
         return "logout";
     }
 }
+
+ */

@@ -72,7 +72,7 @@ public class MenuAdmin {
 
     @GetMapping("/viewUserDatabase")
     public String viewUserDatabase() {
-        return "view_user_database";
+        return "view_user_database_admin";
     }
 
     @GetMapping("/viewEventDatabaseAdmin")

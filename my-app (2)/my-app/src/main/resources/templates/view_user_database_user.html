@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Base de datos de usuarios</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function fetchUsers() {
+            $.get("/api/users", function(data) {
+                $("#usuarios").empty();
+                data.forEach(function(user) {
+                    $("#usuarios").append("<li>Nombre: " + user.nombre + "</li>");
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            fetchUsers();
+            setInterval(fetchUsers, 5000);
+        });
+    </script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .table {
+            display: table;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        .column {
+            display: table-cell;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .header button {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button onclick="location.href='/user'">Volver</button>
+        <h1>Base de datos de usuarios</h1>
+    </div>
+    <div class="container">
+        <div class="table">
+            <div class="column">
+                <h2>Usuarios</h2>
+                <ul id="usuarios"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

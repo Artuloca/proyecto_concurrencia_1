@@ -10,7 +10,7 @@ public class MenuUsuario {
 
     @GetMapping("/user/viewUserDatabase")
     public String viewUserDatabase() {
-        return "view_user_database";
+        return "view_user_database_user";
     }
 
    @GetMapping("/user/viewEventDatabaseUser")

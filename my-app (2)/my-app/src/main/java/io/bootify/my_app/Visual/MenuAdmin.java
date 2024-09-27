@@ -2,6 +2,7 @@ package io.bootify.my_app.Visual;
 
 import io.bootify.my_app.domain.Usuario;
 import io.bootify.my_app.repos.UsuarioRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,8 +40,34 @@ public class MenuAdmin {
 
         Usuario nuevoUsuario = new Usuario(nombre, contraseña, false);
         usuarioRepository.save(nuevoUsuario);
-        model.addAttribute("mensaje", "Usuario añadido exitosamente.");
-        return "add_user";
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/deleteUser")
+    public String deleteUserForm() {
+        return "delete_user";
+    }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@RequestParam String nombre, Model model) {
+        if ("admin".equalsIgnoreCase(nombre)) {
+            model.addAttribute("mensaje", "No se puede borrar el usuario 'admin'.");
+            return "delete_user";
+        }
+
+        boolean usuarioEliminado = usuarioRepository.findByNombre(nombre)
+                .map(usuario -> {
+                    usuarioRepository.delete(usuario);
+                    return true;
+                })
+                .orElse(false);
+
+        if (usuarioEliminado) {
+            return "redirect:/admin";
+        } else {
+            model.addAttribute("mensaje", "El usuario no existe.");
+            return "delete_user";
+        }
     }
 
     @GetMapping("/viewUserDatabase")
@@ -53,11 +80,6 @@ public class MenuAdmin {
         return "view_event_database";
     }
 
-    @GetMapping("/deleteUser")
-    public String deleteUser() {
-        return "delete_user";
-    }
-
     @GetMapping("/showCriticalEvents")
     public String showCriticalEvents() {
         return "show_critical_events";
@@ -68,8 +90,11 @@ public class MenuAdmin {
         return "filter_critical_events";
     }
 
-    @GetMapping("/logout")
-    public String logout() {
-        return "logout";
+    @GetMapping("/adminLogout")
+    public String logout(HttpSession session) {
+        // Invalidate the session to clear the user data
+        session.invalidate();
+        // Redirect to the main menu
+        return "redirect:/";
     }
 }

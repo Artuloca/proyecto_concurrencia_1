@@ -1,6 +1,7 @@
 // File: src/main/java/io/bootify/my_app/Visual/MenuUsuario.java
-/*package io.bootify.my_app.Visual;
+package io.bootify.my_app.Visual;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,33 +10,33 @@ public class MenuUsuario {
 
     @GetMapping("/user/viewUserDatabase")
     public String viewUserDatabase() {
-        // Lógica para ver la base de datos del usuario
+        // Logic to view the user database
         return "view_user_database";
     }
 
-    @GetMapping("/viewEventDatabase")
+    @GetMapping("/user/viewEventDatabase")
     public String viewEventDatabase() {
-        // Lógica para ver la base de datos de eventos
+        // Logic to view the event database
         return "view_event_database";
     }
 
-    @GetMapping("/showCriticalEvents")
+    @GetMapping("/user/showCriticalEvents")
     public String showCriticalEvents() {
-        // Lógica para mostrar eventos críticos
+        // Logic to show critical events
         return "show_critical_events";
     }
 
-    @GetMapping("/filterCriticalEvents")
+    @GetMapping("/user/filterCriticalEvents")
     public String filterCriticalEvents() {
-        // Lógica para filtrar tipo de evento crítico
+        // Logic to filter critical events
         return "filter_critical_events";
     }
 
     @GetMapping("/userLogout")
-    public String logout() {
-        // Lógica para salir
-        return "logout";
+    public String logout(HttpSession session) {
+        // Invalidate the session to clear the user data
+        session.invalidate();
+        // Redirect to the main menu
+        return "redirect:/";
     }
 }
-
- */

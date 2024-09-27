@@ -28,13 +28,23 @@ public class PantallaMenu {
         String mensaje = authenticationService.authenticate(nombreUsuario, contraseña);
         model.addAttribute("mensaje", mensaje);
 
-        // Llamar a los métodos asíncronos
+        // Check for admin credentials
+        if ("admin".equals(nombreUsuario) && "admin".equals(contraseña)) {
+            return "redirect:/admin";
+        }
+
+        // Call asynchronous methods
         configuracionAsincrona.verificarMovimiento(true);
         configuracionAsincrona.verificarTemperatura(25);
         configuracionAsincrona.verificarAcceso(true);
         configuracionAsincrona.mostrarPantallaUsuario(nombreUsuario, contraseña, model);
 
-        // Retornar la vista del menú
+        // Return the menu view
         return "menu";
+    }
+
+    @GetMapping("/admin")
+    public String showAdminMenu() {
+        return "admin_menu";
     }
 }

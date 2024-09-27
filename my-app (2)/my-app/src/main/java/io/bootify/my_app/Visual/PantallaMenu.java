@@ -1,3 +1,4 @@
+// File: src/main/java/io/bootify/my_app/Visual/PantallaMenu.java
 package io.bootify.my_app.Visual;
 
 import io.bootify.my_app.ControlAcceso.AuthenticationService;
@@ -42,7 +43,7 @@ public class PantallaMenu {
         return "menu";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admin-menu")
     public String showAdminMenu() {
         return "admin_menu";
     }

@@ -3,15 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>User Menu</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function fetchEvents() {
+            $.get("/api/events/movimientos", function(data) {
+                $("#movimientos").empty();
+                data.forEach(function(event) {
+                    $("#movimientos").append("<li>Movimiento: " + event.movimiento + "</li>");
+                });
+            });
+
+            $.get("/api/events/temperaturas", function(data) {
+                $("#temperaturas").empty();
+                data.forEach(function(event) {
+                    $("#temperaturas").append("<li>Temperatura: " + event.temperatura + "</li>");
+                });
+            });
+
+            $.get("/api/events/accesos", function(data) {
+                $("#accesos").empty();
+                data.forEach(function(event) {
+                    $("#accesos").append("<li>Acceso: " + event.acceso + "</li>");
+                });
+            });
+        }
+
+        $(document).ready(function() {
+            fetchEvents();
+            setInterval(fetchEvents, 5000);
+        });
+    </script>
 </head>
 <body>
-<div style="text-align: center; margin-top: 20%;">
-    <h1>USER</h1>
-    <button onclick="location.href='/user/viewUserDatabase'">Ver base de datos del usuario</button>
-    <button onclick="location.href='/viewEventDatabase'">Ver base de datos de eventos</button>
-    <button onclick="location.href='/showCriticalEvents'">Mostrar eventos críticos</button>
-    <button onclick="location.href='/filterCriticalEvents'">Filtrar tipo de evento crítico</button>
-    <button onclick="location.href='/userLogout'">Salir</button>
-</div>
+    <div style="text-align: center; margin-top: 20%;">
+        <h1>USER</h1>
+        <ul id="movimientos"></ul>
+        <ul id="temperaturas"></ul>
+        <ul id="accesos"></ul>
+        <button onclick="location.href='/user/viewUserDatabase'">Ver base de datos del usuario</button>
+        <button onclick="location.href='/viewEventDatabase'">Ver base de datos de eventos</button>
+        <button onclick="location.href='/showCriticalEvents'">Mostrar eventos críticos</button>
+        <button onclick="location.href='/filterCriticalEvents'">Filtrar tipo de evento crítico</button>
+        <button onclick="location.href='/userLogout'">Salir</button>
+    </div>
 </body>
 </html>

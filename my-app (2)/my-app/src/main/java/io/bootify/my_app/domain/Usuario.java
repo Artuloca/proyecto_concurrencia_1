@@ -1,4 +1,3 @@
-// File: src/main/java/io/bootify/my_app/domain/Usuario.java
 package io.bootify.my_app.domain;
 
 import io.bootify.my_app.repos.UsuarioRepository;
@@ -49,6 +48,10 @@ public class Usuario {
             if (usuarioRepository.findByNombre("admin").isEmpty()) {
                 Usuario admin = new Usuario("admin", "admin", true);
                 usuarioRepository.save(admin);
+            }
+            if (usuarioRepository.findByNombre("default").isEmpty()) {
+                Usuario defaultUser = new Usuario("default", "default", false);
+                usuarioRepository.save(defaultUser);
             }
         }
     }

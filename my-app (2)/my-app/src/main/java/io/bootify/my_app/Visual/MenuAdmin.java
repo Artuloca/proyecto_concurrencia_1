@@ -75,10 +75,10 @@ public class MenuAdmin {
         return "view_user_database";
     }
 
-    @GetMapping("/viewEventDatabase")
-    public String viewEventDatabase() {
-        return "view_event_database";
-    }
+    @GetMapping("/viewEventDatabaseAdmin")
+public String viewEventDatabaseAdmin() {
+    return "view_event_database_admin";
+}
 
     @GetMapping("/showCriticalEvents")
     public String showCriticalEvents() {
@@ -92,9 +92,15 @@ public class MenuAdmin {
 
     @GetMapping("/adminLogout")
     public String logout(HttpSession session) {
-        // Invalidate the session to clear the user data
         session.invalidate();
-        // Redirect to the main menu
         return "redirect:/";
+    }
+    @GetMapping("/admin/backToMenu")
+    public String backToMenu(HttpSession session) {
+        if (session.getAttribute("admin") != null) {
+            return "redirect:/admin";
+        } else {
+            return "redirect:/user";
+        }
     }
 }

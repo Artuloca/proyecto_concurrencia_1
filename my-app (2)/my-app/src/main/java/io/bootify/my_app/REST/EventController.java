@@ -1,4 +1,3 @@
-// File: src/main/java/io/bootify/my_app/REST/EventController.java
 package io.bootify.my_app.REST;
 
 import io.bootify.my_app.domain.Movimiento;

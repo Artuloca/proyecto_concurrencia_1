@@ -60,3 +60,16 @@ MenuUsuario: es igual que MenuAdmin pero no tiene la posibilidad de crear ni bor
 PantallaMenu: hace uso de @Controller,@Autowired, @GetMapping y @Postmapping, se encarga de mostrar los campos de usuario y contraseña y depenediendo de los datos introducidos te redirige a un menu u a otro, tambien comprueba que los parametros sean correctos, si no se encuentra ningun usuario/admin con la contraseña asociada no te lleva a ningun menu y te deja en el principal
 
 Clase MyAppApplication, se encuentra en el paquete de bootify, hace uso de @SpringBootApplication,Autowired,@Bean,@Configuration,@PreDestroy. tiene un metodo para iniciar el navegador, tiene otro metodo para que al cerrar el programa se vacie la base de datos,tiene un metodo para que en el navegador se muestra el menu principal y finalmente tiene una clase AsynConfig para inicializar hilos separados
+
+
+directorio resources
+dentro de la carpeta templates se encuentra:
+add_user.html->pide un nombre,una contraseña y tiene un boton de añadir
+admin_menu.html-> muestra los botones de añadir,eliminar,ver todas las diferences tablas y el boton de salir
+user_menu-> muestra ver todas las diferences tablas y el boton de salir
+menu.html->pide un nombre,una contraseña y tiene un boton de ingresar
+delete_user.html-> pide un nombre y un boton de borrar
+
+
+carpeta test
+contiene una clase SensorServiceTest para comprobar que se esta ejecutando todo de forma asincrona

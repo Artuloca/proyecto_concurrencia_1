@@ -1,6 +1,8 @@
 # proyecto_concurrencia_1
 //en configuracionAsincrona sobra un metodo
 //comentar la limpieza del bootify
+//el paquete controller no se si sobra
+//sobran muchos imports q no se usan pa na
 https://github.com/Artuloca/proyecto_concurrencia_1.git
 
 este ejercicio está compuesto por diferentes paquetes, dentro del paquete de bootify, estos son: Asincrono, Config, ControlAcceso,Controller,Domain,Evrntos,Menu,Respos,Reset,Sensores,Servicio,Util,Visual
@@ -16,3 +18,18 @@ LocalDevConfig: usa @Configuration,@SneakyThrows y @Profile, está formada por u
 
 PAQUETE CONTROLACCESO
 esta formado por una unica clase, AuthenticationService, la cual usa @Service y @Autowired, tiene un objeto de tipo UsuarioRepository, y un metodo el cual se encarga de comprobar el usuario y contraseña introducido y buscarlo en la base de datos, muestra si ambos campos son correctos o si alguno no lo es
+
+PAQUETE CONTROLLER
+esta formado por dos clases, HomeController y HtmxErrorController
+HomeController usa @Controller y @GetMapping, tiene un metodo index que se encarga de llevar al index
+HtmxErrorController usa @Controller,@RequestMapping, @ResponseStatus, se encarga de manejar los errores para las solicitudes htmx y asegurar que siempre se devuelva un estado HTTP 200, para que el HTML se intercambie correctamente en el cliente
+
+PAQUETE DOMAIN
+USA @Entity,@Getter,@Setter,@Id,@GeneratedValue,@(eltipo de relacion que se vaya a usar),@JoinColumn,@Column, tambien hace uso del patronde diseño strategy,contiene las entidades que se utilizan en nuestra base de datos con sus respectivos atributos, estas clases son: Acceso,AccesoSensor,Databases,Evento,EventoAcceso,EventoMovimiento,EventoTemperatura,ExecutorService,Movimiento,MovimientoSensor,Sensor,SpringSecurity,Temperatura,TemperaturaSensor y Usuario
+
+PAQUETE EVENTOS
+esta compuesto por una unica clase llamada GeneradorEventos, usa @Component, tiene objetos de tipo MovimientoRepository, TemperaturaRepository,AccesoRepository, un random,ScheduledExecutorService y SensorService, los cuales se inyectan en el constructor, menos el random
+Contiene un metodo para generar los eventos y añadir cada valor a su respectiva tabla, tambien SensorService ejecuta su metodo de comprobacion de los datos
+
+PAQUETE MENU
+esta formado por una unica clase llamada PantallaPrincipal, la cual usa @Component y @Async, se encarga de mostrar la parte visual, con los campos de usuario y contraseña, se ejecuta de forma concurrente a la creacion de los eventos

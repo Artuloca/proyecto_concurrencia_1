@@ -13,3 +13,6 @@ está compuesto por 3 clases, ControllerConfig,DomainConfig,LocalDevConfig
 ControllerCOnfig: usa @ControllerAdvice, se encarga de que si llega alguna de texto vacia la convierte a null antes de vincularlo a nada
 DomainConfig: usa @Configuration, @EntityScan,@EnableJpaRepositories y @EnableTransactionManagment, esta compuesta por un constructor vacio, se encarga de crear las entidades y repositorios,con los atributos y relaciones que se crean en la base de datos.
 LocalDevConfig: usa @Configuration,@SneakyThrows y @Profile, está formada por un unico metodo el cual se encarga de configurar las plantillas del Thymeleaf y asi evitar tener que cargarlas desde el classpath
+
+PAQUETE CONTROLACCESO
+esta formado por una unica clase, AuthenticationService, la cual usa @Service y @Autowired, tiene un objeto de tipo UsuarioRepository, y un metodo el cual se encarga de comprobar el usuario y contraseña introducido y buscarlo en la base de datos, muestra si ambos campos son correctos o si alguno no lo es

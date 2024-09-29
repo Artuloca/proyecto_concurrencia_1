@@ -10,33 +10,36 @@ public class MenuUsuario {
 
     @GetMapping("/user/viewUserDatabase")
     public String viewUserDatabase() {
-        // Logic to view the user database
-        return "view_user_database";
+        return "view_user_database_user";
     }
 
-    @GetMapping("/user/viewEventDatabase")
-    public String viewEventDatabase() {
-        // Logic to view the event database
-        return "view_event_database";
-    }
+   @GetMapping("/user/viewEventDatabaseUser")
+public String viewEventDatabaseUser() {
+    return "view_event_database_user";
+}
 
     @GetMapping("/user/showCriticalEvents")
     public String showCriticalEvents() {
-        // Logic to show critical events
         return "show_critical_events";
     }
 
     @GetMapping("/user/filterCriticalEvents")
     public String filterCriticalEvents() {
-        // Logic to filter critical events
         return "filter_critical_events";
     }
 
     @GetMapping("/userLogout")
     public String logout(HttpSession session) {
-        // Invalidate the session to clear the user data
         session.invalidate();
-        // Redirect to the main menu
         return "redirect:/";
+    }
+
+    @GetMapping("/user/backToMenu")
+    public String backToMenu(HttpSession session) {
+        if (session.getAttribute("admin") != null) {
+            return "redirect:/admin";
+        } else {
+            return "redirect:/user";
+        }
     }
 }

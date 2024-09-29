@@ -3,6 +3,8 @@ https://github.com/Artuloca/proyecto_concurrencia_1.git
 # proyecto_concurrencia_1
 [Link al repositorio](https://github.com/Artuloca/proyecto_concurrencia_1.git)
 
+A partir de la rama "Enlazar-Menu" la base de datos ya no se vacía cuando ejecutas el programa pero funciona adecuadamente, mostrandose los eventos detectados en su respectivo menú de foma visual.
+
 Este ejercicio está compuesto por diferentes paquetes, dentro del paquete de bootify, estos son: Asincrono, Config, ControlAcceso,Controller,Domain,Evrntos,Menu,Respos,Reset,Sensores,Servicio,Util,Visual
 
 ## PAQUETE ASINCRONO
@@ -39,6 +41,10 @@ Cada entidad tiene asociado un repositorio para que se puedan realizar operacion
 ## PAQUETE RESET
 Está compuesto por una única clase la cual se llama DatabaseCleanUpService usa @Service, tiene un único método el cual se encarga de borrar los datos de los eventos y los usuarios (menos el admin) cuando se deja de compilar el programa.
 
+##PAQUETE REST
+-EventControler: Controlador REST que maneja solicitudes HTTP GET para obtener listas de diferentes tipos de eventos (movimientos, temperaturas y accesos).
+-UserControler: Controlador REST que maneja solicitudes HTTP GET para obtener una lista de usuarios.
+
 ## PAQUETE SENSORES
 Está compuesto por 3 clases, SensorAcceso,SensorMovimiento,SensorTemperatura.
 
@@ -72,6 +78,10 @@ Dentro de la carpeta templates se encuentra:
 - user_menu: muestra ver todas las diferencias tablas y el botón de salir.
 - menu.html: pide un nombre, una contraseña y tiene un botón de ingresar.
 - delete_user.html: pide un nombre y un botón de borrar.
+- view_event_database_user.html: Página HTML que muestra la base de datos de eventos para los usuarios, actualizándose automáticamente cada 5 segundos.
+- view_event_database_admin.html:  Página HTML que muestra la base de datos de eventos para los administradores, actualizándose automáticamente cada 5 segundos.
+- view_user_database_admin.html: Página HTML que muestra la base de datos de usuarios para los administradores, actualizándose automáticamente cada 5 segundos.
+- view_user_database_user.html: Página HTML que muestra la base de datos de usuarios para los usuarios, actualizándose automáticamente cada 5 segundos.
 
 ## Carpeta test
 Contiene una clase SensorServiceTest para comprobar que se está ejecutando todo de forma asíncrona.

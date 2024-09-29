@@ -1,7 +1,4 @@
-
-//en configuracionAsincrona sobra un metodo
-//comentar la limpieza del bootify
-//sobran muchos imports q no se usan pa na
+Arturo lopez, Hugo Sanchez,jose daniel martin, fernando santamaria
 https://github.com/Artuloca/proyecto_concurrencia_1.git
 # proyecto_concurrencia_1
 [Link al repositorio](https://github.com/Artuloca/proyecto_concurrencia_1.git)
